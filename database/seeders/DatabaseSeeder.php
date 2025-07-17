@@ -13,9 +13,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        $this->call([
-            DummyDataSeeder::class,
-        ]);
+        // Hanya jalankan DummyDataSeeder di lingkungan lokal
+        if ($this->app->environment('local')) {
+            $this->call([
+                DummyDataSeeder::class,
+            ]);
+        }
 
         $this->call([
             AdminSeeder::class,
